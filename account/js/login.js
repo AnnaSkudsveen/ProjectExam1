@@ -25,10 +25,12 @@ logInBtn.addEventListener("click", () => {
       .then((response) => response.json())
       .then((data) => {
         accesstoken = data.data.accessToken;
+
+        console.log(accesstoken);
         window.location.replace(`overview.html`);
       });
   } catch (error) {
-    // errorHandling.innerHTML = `Login failed`;
+    console.log("an error has happened");
   }
 });
 
