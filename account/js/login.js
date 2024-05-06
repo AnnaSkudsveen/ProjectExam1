@@ -12,21 +12,20 @@ logInBtn.addEventListener("click", () => {
   try {
     fetch("https://v2.api.noroff.dev/auth/login", {
       method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
       body: JSON.stringify({
         email: `${emailInput.value}`,
         password: `${passwordInput.value}`,
       }),
 
       // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
     })
       .then((response) => response.json())
       .then((data) => {
         accesstoken = data.data.accessToken;
-
-        console.log(accesstoken);
+        sessionStorage.setItem("accesstoken", `${accesstoken}`);
         window.location.replace(`overview.html`);
       });
   } catch (error) {
