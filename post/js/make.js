@@ -28,7 +28,7 @@ function postRequest() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      console.log("sent information: " + data);
     });
 }
 
