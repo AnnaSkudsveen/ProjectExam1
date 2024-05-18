@@ -6,7 +6,6 @@ const imageText = document.getElementById("imageText");
 const tagInput = document.getElementById("tags");
 
 const accessToken = sessionStorage.getItem("accesstoken");
-console.log(accessToken);
 
 function postRequest() {
   fetch("https://v2.api.noroff.dev/blog/posts/AnnaSkudsveen", {
@@ -19,7 +18,7 @@ function postRequest() {
     body: JSON.stringify({
       title: `${titleInput.value}`,
       body: `${textInput.value}`,
-      tags: [`${tagInput.value}`],
+      tags: tagInput.value.split(",").map((tag) => tag.trim()),
       // media: {
       //   url: `${imageInput.value}`,
       //   alt: `${imageText.value}`,
@@ -29,6 +28,7 @@ function postRequest() {
     .then((response) => response.json())
     .then((data) => {
       console.log("sent information: " + data);
+      window.location.href = "../account/overview.html";
     });
 }
 
@@ -36,7 +36,6 @@ publishBtn.addEventListener("click", () => {
   event.preventDefault();
   try {
     postRequest();
-    window.location.href = "../account/overview.html";
   } catch (error) {
     console.log("an error has happened, try logging in");
   }
