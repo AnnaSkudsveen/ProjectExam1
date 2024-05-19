@@ -1,6 +1,7 @@
 const headerSection = document.querySelector(".header-section");
 const carouselSection = document.querySelector(".carousel-section");
 const blogPostSection = document.querySelector(".blog-post-overview");
+const readMoreBtn = document.querySelector(".read-more-btn");
 
 function getPosts() {
   try {
@@ -23,7 +24,7 @@ function showHeader(postData) {
     <img src="${postData.data[0].media}" alt="image linked to post">
     <h2>${postData.data[0].title}</h2>
     <p>${postData.data[0].body}</p>
-    <button>Read more</button>
+    <button class="read-more-btn">Read more</button>
     </section>
       `;
 }
@@ -67,3 +68,5 @@ function showPosts(postData) {
 }
 
 getPosts();
+
+readMoreBtn.addEventListener("click", () => {});
