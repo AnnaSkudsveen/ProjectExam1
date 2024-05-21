@@ -1,2 +1,54 @@
 @import url(root.css);
 @import url(nav-footer.css);
+
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+img {
+  height: 360px;
+  width: 100vw;
+}
+
+/* Small (sm)  portrait tablets and large phones */
+@media (min-width: 640px) {
+  .post {
+    padding: 0 35px;
+  }
+}
+
+/* Medium (md) landscape tablets*/
+@media (min-width: 768px) {
+  /* Your styles for the medium breakpoint here */
+  img {
+    height: 400px;
+  }
+
+  .post {
+    padding: 0 100px;
+  }
+}
+
+/* Large (lg) laptops/desktops*/
+@media (min-width: 1024px) {
+  /* Your styles for the large breakpoint here */
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  main {
+    width: 1024px;
+  }
+
+  .post {
+    padding: 0 160px;
+  }
+
+  img {
+    width: 1024px;
+  }
+}

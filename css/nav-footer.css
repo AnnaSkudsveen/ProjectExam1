@@ -1,19 +1,20 @@
 @import url(root.css);
 
-nav {
+nav,
+footer {
+  width: 100vw;
   background-color: var(--primary);
-  height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+nav {
+  height: 64px;
+}
+
 footer {
   height: 184px;
-  background-color: var(--primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
