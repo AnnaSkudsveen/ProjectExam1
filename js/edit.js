@@ -7,19 +7,6 @@ const imageText = document.getElementById("imageText");
 const tagInput = document.getElementById("tags");
 
 const accessToken = sessionStorage.getItem("accesstoken");
-console.log(accessToken);
-
-function getRequest() {
-  fetch("https://v2.api.noroff.dev/blog/posts/AnnaSkudsveen")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      titleInput.value = `${data.title}`;
-      textInput.value = `${data.body}`;
-      tagInput.value = `${data.tags}`;
-    });
-}
-getRequest();
 
 //Code taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-advanced/url-parameters?nav=undefined
 //Get parameter from URL
@@ -27,7 +14,20 @@ const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 const postId = searchParameters.get("id");
 
-putRequest(postId);
+function getRequest() {
+  fetch(`https://v2.api.noroff.dev/blog/posts/AnnaSkudsveen/${postId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      titleInput.value = `${data.data.title}`;
+      textInput.value = `${data.data.body}`;
+      tagInput.value = `${data.data.tags}`;
+      imageInput.value = `${data.data.media.url}`;
+      imageText.value = `${data.data.media.alt}`;
+    });
+}
+getRequest();
+
+// putRequest(postId);
 
 function putRequest(id) {
   fetch(`https://v2.api.noroff.dev/blog/posts/AnnaSkudsveen/${id}`, {
@@ -41,15 +41,15 @@ function putRequest(id) {
       title: `${titleInput.value}`,
       body: `${textInput.value}`,
       tags: [`${tagInput.value}`],
-      // media: {
-      //   url: `${imageInput.value}`,
-      //   alt: `${imageText.value}`,
-      // },
+      media: {
+        url: `${imageInput.value}`,
+        alt: `${imageText.value}`,
+      },
     }),
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("edited information: " + data);
+      window.location.href = "../account/overview.html";
     });
 }
 
@@ -61,28 +61,25 @@ function deleteRequest(id) {
       // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
       "Content-type": "application/json; charset=UTF-8",
     },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(error);
-    });
+  }).then((response) => {
+    response.json();
+    window.location.href = "../account/overview.html";
+  });
 }
 
 editBtn.addEventListener("click", () => {
   event.preventDefault();
   try {
-    putRequest();
-    window.location.href = "../account/overview.html";
+    putRequest(postId);
   } catch (error) {
-    console.log("an error has happened, try logging in");
+    console.log("an error has happened, try logging in" + error);
   }
 });
 
-deleteBtn.addEventListener("click", () => {
+deleteBtn.addEventListener("click", (event) => {
   event.preventDefault();
   try {
-    deleteRequest();
-    window.location.href = "../account/overview.html";
+    deleteRequest(postId);
   } catch (error) {
     console.log("an error has happened, try logging in");
   }

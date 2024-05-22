@@ -59,7 +59,7 @@ function showPosts(postData) {
     blogPostSection.innerHTML += `
     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
     <section class="blog-post">
-    <img src="${postData.data[i].media}" alt="">
+    <img src="${postData.data[i].media.url}" alt="">
     <h2>${postData.data[i].title}</h2>
     <p>${postData.data[i].body}</p>
     <button>Read more</button>
