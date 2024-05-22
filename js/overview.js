@@ -1,4 +1,5 @@
 const newPostBtn = document.querySelector(".new-post-btn");
+const allPosts = document.querySelector(".all-posts");
 
 newPostBtn.addEventListener("click", () => {
   event.preventDefault();
@@ -18,7 +19,20 @@ function getPosts() {
 }
 
 function showPosts(postData) {
-  //   console.log(postData);
+  console.log(postData);
+  for (let i = 0; i < postData.data.length; i++) {
+    allPosts.innerHTML += `
+    <a class="post-link-card" href="/post/index.html?id=${postData.data[i].id}">
+    <section class="blog-post">
+    <img src="${postData.data[i].media}" alt="">
+    <h2>${postData.data[i].title}</h2>
+    <p>${postData.data[i].body}</p>
+    <a class="post-link-card" href="/post/edit.html?id=${postData.data[i].id}">
+    <button>edit</button>
+    </section>
+    </a>
+      `;
+  }
 }
 
 getPosts();

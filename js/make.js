@@ -19,10 +19,10 @@ function postRequest() {
       title: `${titleInput.value}`,
       body: `${textInput.value}`,
       tags: tagInput.value.split(",").map((tag) => tag.trim()),
-      // media: {
-      //   url: `${imageInput.value}`,
-      //   alt: `${imageText.value}`,
-      // },
+      media: {
+        url: `${imageInput.value}`,
+        alt: `${imageText.value}`,
+      },
     }),
   })
     .then((response) => response.json())
@@ -37,6 +37,6 @@ publishBtn.addEventListener("click", () => {
   try {
     postRequest();
   } catch (error) {
-    console.log("an error has happened, try logging in");
+    console.log("an error has happened, try logging in" + error);
   }
 });
