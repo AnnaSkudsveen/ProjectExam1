@@ -19,7 +19,7 @@ function getPosts() {
 
 function showPosts(postData) {
   blogPost.innerHTML += `
-      <img src="${postData.data.media}" alt="image">
+      <img src="${postData.data.media.url}" alt="${postData.data.media.alt}">
       <h1>${postData.data.title}</h1>
       <p>${postData.data.body}</p>
         `;
