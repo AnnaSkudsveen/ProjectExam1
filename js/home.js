@@ -22,9 +22,11 @@ function showHeader(postData) {
   headerSection.innerHTML += `
   <a class="post-link-card" href="post/index.html?id=${postData.data[0].id}">
     <section class="headerPost">
-    <img src="${postData.data[0].media}" alt="image linked to post">
+    <img src="${postData.data[0].media.url}" alt="${
+    postData.data[i].media.alt
+  }">
     <h2>${postData.data[0].title}</h2>
-    <p>${postData.data[0].body}</p>
+    <p>${shortenText(postData.data[i].body)}</p>
     <button class="read-more-btn">Read more</button>
     </section>
     </a>
@@ -36,9 +38,11 @@ function carousel(postData) {
     carouselSection.innerHTML += `
     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
     <section class="carouselPost">
-    <img src="${postData.data[i].media}" alt="image linked to post">
+    <img src="${postData.data[i].media.url}" alt="${
+      postData.data[i].media.alt
+    }">
     <h2>${postData.data[i].title}</h2>
-    <p>${postData.data[i].body}</p>
+    <p>${shortenText(postData.data[i].body)}</p>
     <button>Read more</button>
     </section>
     </a>
@@ -52,6 +56,12 @@ function carousel(postData) {
   }
 }
 
+function shortenText(text) {
+  const words = text.split(" ");
+  const wordsShort = words.slice(0, 20).join(" ") + "...";
+  return wordsShort;
+}
+
 //Fix: so theres pagination that shows 12 and 12
 
 function showPosts(postData) {
@@ -61,7 +71,7 @@ function showPosts(postData) {
     <section class="blog-post">
     <img src="${postData.data[i].media.url}" alt="">
     <h2>${postData.data[i].title}</h2>
-    <p>${postData.data[i].body}</p>
+    <p>${shortenText(postData.data[i].body)}</p>
     <button>Read more</button>
     </section>
     </a>
