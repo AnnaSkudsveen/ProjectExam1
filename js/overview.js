@@ -18,6 +18,12 @@ function getPosts() {
   }
 }
 
+function shortenText(text) {
+  const words = text.split(" ");
+  const wordsShort = words.slice(0, 20).join(" ") + "...";
+  return wordsShort;
+}
+
 function showPosts(postData) {
   console.log(postData);
   for (let i = 0; i < postData.data.length; i++) {
@@ -26,7 +32,7 @@ function showPosts(postData) {
     <section class="blog-post">
     <img src="${postData.data[i].media}" alt="">
     <h2>${postData.data[i].title}</h2>
-    <p>${postData.data[i].body}</p>
+    <p>${shortenText(postData.data[i].body)}</p>
     <a class="post-link-card" href="/post/edit.html?id=${postData.data[i].id}">
     <button>edit</button>
     </section>
