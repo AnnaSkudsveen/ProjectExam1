@@ -20,7 +20,8 @@ svg {
   top: 160px;
 }
 
-.login-form {
+.login-form,
+.register-form {
   background-color: var(--main-background);
   width: 274px;
   height: 306px;
@@ -51,7 +52,8 @@ input {
 }
 
 .logInBtn,
-#registerBtn {
+#registerPageBtn,
+.registerBtn {
   width: 128px;
   height: 32px;
   border-radius: 4px;
@@ -61,9 +63,11 @@ input {
 }
 
 .logInBtn:hover,
-#registerBtn:hover,
+#registerPageBtn:hover,
+.registerBtn:hover,
 .logInBtn:focus,
-#registerBtn:focus {
+#registerPageBtn:focus,
+.registerBtn:focus {
   border: 1px solid var(--secondary);
   color: var(--primary);
   background-color: var(--tertiary);

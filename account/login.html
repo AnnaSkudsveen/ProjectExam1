@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login || HotView Labs</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login-register.css">
     <script src="../js/login.js" defer></script>
 </head>
 
@@ -26,16 +26,16 @@
 
                 <label for="email"></label>
                 <input type="email" id="email" name="email" class="emailField" placeholder="Email"
-                    autocomplete="username">
+                    autocomplete="username" required>
 
                 <label for="password"></label>
                 <input type="password" id="password" name="password" class="passwordField" placeholder="Password"
-                    autocomplete="current-password">
+                    autocomplete="current-password" required>
 
 
             </form>
-            <button class="logInBtn">Log in</button>
-            <button id="registerBtn">Register</button>
+            <button class="logInBtn" type="submit">Log in</button>
+            <button id="registerPageBtn">Create new user</button>
         </section>
 
 
