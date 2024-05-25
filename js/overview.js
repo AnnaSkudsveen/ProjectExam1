@@ -28,13 +28,16 @@ function showPosts(postData) {
   console.log(postData);
   for (let i = 0; i < postData.data.length; i++) {
     allPosts.innerHTML += `
-    <a class="post-link-card" href="/post/index.html?id=${postData.data[i].id}">
-    <section class="blog-post">
-    <img src="${postData.data[i].media}" alt="">
-    <h2>${postData.data[i].title}</h2>
-    <p>${shortenText(postData.data[i].body)}</p>
     <a class="post-link-card" href="/post/edit.html?id=${postData.data[i].id}">
-    <button>edit</button>
+    <section class="blog-post">
+    <div class="img-header">
+    <img src="${postData.data[i].media.url}" alt="">
+    <h2>${postData.data[i].title}</h2>
+    </div>
+    <div class="post-card-btns">
+    <button class="editBtn">Edit</button>
+    <button class="editBtn">Delete</button>
+    </div>
     </section>
     </a>
       `;

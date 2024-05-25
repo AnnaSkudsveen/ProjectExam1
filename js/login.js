@@ -1,6 +1,6 @@
 const logInForm = document.querySelector(".inputForm");
 const logInBtn = document.querySelector(".logInBtn");
-const registerBtn = document.getElementById("registerBtn");
+const registerBtn = document.getElementById("registerPageBtn");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const errorHandling = document.querySelector(".error-handling");
