@@ -1,30 +1,41 @@
 @import url(root.css);
 @import url(nav-footer.css);
 
-img {
-  width: 232px;
-  height: 201px;
+main {
+  padding: 0 20px;
 }
 
-img {
-  width: 232px;
-  height: 201px;
+.header-section {
+  margin: auto;
+  /* height: 480px;
+  width: 1000px; */
 }
 
-.carousel-wrapper {
+.header-section img {
+  height: 480px;
+  width: calc(100vw);
+  object-fit: cover;
+  overflow: hidden;
+}
+
+/* img {
+  width: 232px;
+  height: 201px;
+} */
+
+.carousel-section {
   margin: 1rem;
   position: relative;
   overflow: clip;
 }
 
 .carousel-container {
-  height: calc(100vh - 2rem);
+  height: 221px;
   width: 100%;
   display: flex;
-  list-style: none;
   margin: 0;
   padding: 0;
-  overflow: scroll;
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -32,21 +43,22 @@ img {
   width: 100%;
   height: 100%;
   flex: 1 0 100%;
-  /* transition: all ease-in-out 800ms; */
 }
 
 .carousel-arrow {
   position: absolute;
   display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 4rem;
-  background-color: white;
+  height: 3rem;
+  width: 3rem;
+  background-color: var(--main-background);
   border: none;
-  width: 2rem;
-  font-size: 3rem;
-  padding: 0;
+  border-radius: 1.5rem;
+  font-size: 32px;
   cursor: pointer;
   opacity: 0.5;
   transition: opacity 100ms;
@@ -67,7 +79,7 @@ img {
   padding-left: 0.75rem;
 }
 
-.post.one {
+/* .post.one {
   background-color: aqua;
 }
 
@@ -77,4 +89,54 @@ img {
 
 .post.three {
   background-color: rgb(55, 77, 77);
+} */
+
+/* Small (sm)  portrait tablets and large phones */
+@media (min-width: 640px) {
+  main {
+    padding: 0 35px;
+  }
+}
+
+/* Medium (md) landscape tablets*/
+@media (min-width: 768px) {
+  /* Your styles for the medium breakpoint here */
+  main {
+    padding: 0 70px;
+  }
+}
+
+/* Large (lg) laptops/desktops*/
+@media (min-width: 1024px) {
+  /* Your styles for the large breakpoint here */
+  main {
+    padding: 0 140px;
+  }
+
+  .carousel-container {
+    height: 328px;
+  }
+}
+
+/* Extra Large (xl) large laptops and desktops*/
+
+@media (min-width: 1280px) {
+  /* Your styles for the extra large breakpoint here */
+}
+
+/* 2XL (2xl) */
+@media (min-width: 1536px) {
+  /* Your styles for the 2XL breakpoint here */
+  main {
+    padding: 0;
+    width: calc(1400px - 140px);
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+  }
+
+  .header-section img {
+    width: 1400px;
+  }
 }

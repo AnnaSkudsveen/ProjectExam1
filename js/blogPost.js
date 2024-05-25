@@ -3,7 +3,6 @@ const blogPost = document.querySelector(".post");
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 const postId = searchParameters.get("id");
-console.log(postId);
 
 function getPosts() {
   try {
@@ -20,6 +19,8 @@ function getPosts() {
 function showPosts(postData) {
   blogPost.innerHTML += `
       <img src="${postData.data.media.url}" alt="${postData.data.media.alt}">
+      <p>Author: ${postData.data.author.name}</p>
+      <p>Created: ${postData.data.created}</p>
       <h1>${postData.data.title}</h1>
       <p>${postData.data.body}</p>
         `;
