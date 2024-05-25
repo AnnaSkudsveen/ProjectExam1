@@ -18,6 +18,7 @@ function paginate(items, itemsPerPage) {
     const end = start + itemsPerPage;
     pages.push(items.slice(start, end));
   }
+  console.log(pages);
 
   return pages;
   // showPosts(pages);
@@ -29,27 +30,29 @@ function getPosts() {
       .then((response) => response.json())
       .then((data) => {
         showHeader(data);
-        console.log(showHeader(data));
         carousel(data);
-        console.log(carousel(data));
-        const paginatedPosts = paginate(data, 12);
-        for (const post in paginatedPosts[0]) {
-          showPosts(post);
-        }
+        const paginatedPosts = paginate(data.data, 4);
+        showPosts(paginatedPosts);
+        console.log(data);
+        console.log(paginate(data.data, 4));
+        // showPosts(paginatedPosts.data);
+        // for (const post in paginatedPosts[0]) {
+        //   showPosts(post);
+        // }
 
-        let counter = 1;
-        for (const postArray of paginatedPosts) {
-          const pageButton = document.createElement("button");
-          pageButton.innerText = counter;
-          counter++;
-          pageButton.addEventListener("click", () => {
-            blogPostSection.innerHTML = "  ";
-            for (const book of postArray) {
-              displayBook(book);
-            }
-          });
-          pageButtons.appendChild(pageButton);
-        }
+        // let counter = 1;
+        // for (const postArray of paginatedPosts) {
+        //   const pageButton = document.createElement("button");
+        //   pageButton.innerText = counter;
+        //   counter++;
+        //   pageButton.addEventListener("click", () => {
+        //     blogPostSection.innerHTML = "  ";
+        //     for (const book of postArray) {
+        //       displayBook(book);
+        //     }
+        //   });
+        //   pageButtons.appendChild(pageButton);
+        // }
       });
   } catch (error) {
     console.log("an error has happened");
@@ -70,41 +73,62 @@ function showHeader(postData) {
       `;
 }
 
-function carousel(postData) {
-  for (let i = 0; i < 3; i++) {
-    carouselSection.innerHTML += `
-    <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
-    <section class="carouselPost">
-    <img src="${postData.data[i].media.url}" 
-    alt="${postData.data[i].media.alt}">
-    <h2>${postData.data[i].title}</h2>
-    <p>${shortenText(postData.data[i].body)}</p>
-    <button>Read more</button>
-    </section>
-    </a>
-    `;
+const carouselContainer = document.getElementById("carousel-container");
+const post = document.querySelector(".post");
+const prevBtn = document.getElementById("carousel-arrow-prev");
+const nextBtn = document.getElementById("carousel-arrow-next");
 
-    // readMoreBtn.addEventListener("click", () => {
-    //   const postId = postData.data[i].id;
-    //   console.log(postId);
-    //   window.location.replace(`/post/index.html/?id=${postId}`);
-    // });
-  }
-}
+nextBtn.addEventListener("click", () => {
+  const postWidth = post.clientWidth;
+  carouselContainer.scrollLeft += postWidth;
+  console.log("moved forwards by " + postWidth + " width");
+});
+
+prevBtn.addEventListener("click", () => {
+  const postWidth = post.clientWidth;
+  carouselContainer.scrollLeft -= postWidth;
+  console.log("moved back by " + postWidth + " width");
+});
+
+// function carousel(postData) {
+//   for (let i = 0; i < 3; i++) {
+//     carouselSection.innerHTML += `
+//     <li>
+//     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
+//     <section class="carouselPost">
+//     <img src="${postData.data[i].media.url}"
+//     alt="${postData.data[i].media.alt}">
+//     <h2>${postData.data[i].title}</h2>
+//     <p>${shortenText(postData.data[i].body)}</p>
+//     <button>Read more</button>
+//     </section>
+//     </a>
+//     <li>
+//     `;
+
+//     // readMoreBtn.addEventListener("click", () => {
+//     //   const postId = postData.data[i].id;
+//     //   console.log(postId);
+//     //   window.location.replace(`/post/index.html/?id=${postId}`);
+//     // });
+//   }
+// }
 
 function showPosts(postData) {
   console.log(postData);
   for (let i = 0; i < postData.length; i++) {
-    blogPostSection.innerHTML += `
-    <a class="post-link-card" href="post/index.html?id=${postData[i].id}">
-    <section class="blog-post">
-    <img src="${postData[i].media.url}" alt="">
-    <h2>${postData[i].title}</h2>
-    <p>${shortenText(postData[i].body)}</p>
-    <button>Read more</button>
-    </section>
-    </a>
-      `;
+    postData[i].forEach((post) => {
+      blogPostSection.innerHTML += `
+      <a class="post-link-card" href="post/index.html?id=${post[i].id}">
+      <section class="blog-post">
+      <img src="${postData[i].media.url}" alt="">
+      <h2>${postData[i].title}</h2>
+      <p>${shortenText(postData[i].body)}</p>
+      <button>Read more</button>
+      </section>
+      </a>
+        `;
+    });
   }
 }
 // function showPosts(postData) {
