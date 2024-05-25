@@ -27,7 +27,9 @@ h6 {
 
 p,
 li,
-button {
+button,
+input,
+textarea {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
   font-style: normal;

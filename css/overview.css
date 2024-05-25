@@ -33,10 +33,10 @@ main {
   border: none;
 }
 
-.logInBtn:hover,
-#registerBtn:hover,
-.logInBtn:focus,
-#registerBtn:focus {
+.editBtn:hover,
+.new-post-btn:hover,
+.editBtn:focus,
+.new-post-btn:focus {
   border: 1px solid var(--secondary);
   color: var(--primary);
   background-color: var(--tertiary);
