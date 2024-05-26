@@ -1,0 +1,74 @@
+@import url(root.css);
+
+body {
+  height: 100vh;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+svg {
+  position: relative;
+  top: 160px;
+}
+
+.login-form,
+.register-form {
+  background-color: var(--main-background);
+  width: 274px;
+  height: 306px;
+  position: relative;
+  top: 214px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  margin: 10px 0;
+  height: 32px;
+  width: 224px;
+  border: 1px solid var(--secondary);
+  background-color: var(--background);
+  padding: 0 8px;
+  border-radius: 2px;
+}
+
+.logInBtn,
+#registerPageBtn,
+.registerBtn {
+  width: 128px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--main-background);
+  border: none;
+}
+
+.logInBtn:hover,
+#registerPageBtn:hover,
+.registerBtn:hover,
+.logInBtn:focus,
+#registerPageBtn:focus,
+.registerBtn:focus {
+  border: 1px solid var(--secondary);
+  color: var(--primary);
+  background-color: var(--tertiary);
+}

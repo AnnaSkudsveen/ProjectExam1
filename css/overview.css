@@ -1,2 +1,113 @@
 @import url(root.css);
 @import url(nav-footer.css);
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main {
+  padding: 0 20px;
+}
+
+.new-post-btn {
+  width: 290px;
+  height: 52px;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.editBtn {
+  width: 127px;
+  height: 26px;
+  font-size: 16px;
+}
+
+.editBtn,
+.new-post-btn {
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--main-background);
+  border: none;
+}
+
+.editBtn:hover,
+.new-post-btn:hover,
+.editBtn:focus,
+.new-post-btn:focus {
+  border: 1px solid var(--secondary);
+  color: var(--primary);
+  background-color: var(--tertiary);
+}
+
+.all-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.blog-post,
+.post-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 135px;
+  height: 272px;
+  justify-content: space-between;
+}
+
+.post-link-card h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.post-card-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.img-header img {
+  width: 135px;
+}
+
+/* Small (sm)  portrait tablets and large phones */
+@media (min-width: 640px) {
+  main {
+    padding: 0 35px;
+  }
+}
+
+/* Medium (md) landscape tablets*/
+@media (min-width: 768px) {
+  /* Your styles for the medium breakpoint here */
+}
+
+/* Large (lg) laptops/desktops*/
+@media (min-width: 1024px) {
+  /* Your styles for the large breakpoint here */
+  main {
+    padding: 0 70px;
+  }
+}
+
+/* Extra Large (xl) large laptops and desktops*/
+
+@media (min-width: 1280px) {
+  /* Your styles for the extra large breakpoint here */
+  main {
+    max-width: 1280px;
+  }
+
+  .all-posts {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center;
+    align-items: center; */
+    gap: 20px;
+  }
+}

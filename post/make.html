@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/make-edit.css">
     <script src="../js/make.js" defer></script>
 </head>
 
@@ -24,21 +24,20 @@
         </a>
     </nav>
     <main>
-        <h1>Post</h1>
         <form action="">
+            <h1>Post</h1>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="Title">
 
             <label for="text">Text</label>
-            <input type="text" name="text" id="text" placeholder="Write your blog text here">
+            <textarea type="text" name="text" id="text" placeholder="Write your text here"></textarea>
 
             <label for="tags">Tags</label>
-            <input type="text" name="tags" id="tags" placeholder="Tags">
+            <input type="text" name="tags" id="tags" placeholder="Tag">
 
-            <label for="tags">Image</label>
+            <label for="uploadImg">Image</label>
             <input type="text" name="image" id="uploadImg" placeholder="Image">
-            <!-- <label for="uploadImg">Upload image:</label>
-            <input type="file" accept="image/*" name="uploadImg" id="uploadImg"> -->
+
             <input type="text" name="imageText" id="imageText" placeholder="imageText">
 
             <button class="publish">Publish</button>

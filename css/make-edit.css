@@ -1,0 +1,121 @@
+@import url(root.css);
+@import url(nav-footer.css);
+
+body {
+  overflow-x: hidden;
+}
+
+input,
+textarea {
+  background-color: var(--background);
+  /* margin: 20px; */
+  border: 1px solid var(--primary);
+  padding-left: 8px;
+  margin: 0;
+  font-size: 16px;
+}
+
+#title,
+#tags,
+#uploadImg,
+#imageText,
+#text {
+  width: calc(100vw - 70px);
+}
+
+#text {
+  height: 176px;
+  resize: none;
+  padding-top: 8px;
+}
+
+#title,
+#tags,
+#uploadImg,
+#imageText {
+  height: 40px;
+}
+
+.publish,
+.edit {
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--main-background);
+  border: none;
+  height: 40px;
+  width: 192px;
+  font-size: 16px;
+}
+.delete {
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--main-background);
+  border: none;
+  height: 28px;
+  width: 133px;
+  font-size: 16px;
+}
+
+.publish:hover,
+.publish:focus {
+  border: 1px solid var(--secondary);
+  color: var(--primary);
+  background-color: var(--tertiary);
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+label {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 20px;
+}
+
+/* Small (sm)  portrait tablets and large phones */
+@media (min-width: 640px) {
+}
+
+/* Medium (md) landscape tablets*/
+@media (min-width: 768px) {
+  /* Your styles for the medium breakpoint here */
+  #title,
+  #tags,
+  #uploadImg,
+  #imageText,
+  #text {
+    max-width: calc(768px - 70px);
+  }
+}
+
+/* Large (lg) laptops/desktops*/
+@media (min-width: 1024px) {
+  /* Your styles for the large breakpoint here */
+  #title,
+  #tags,
+  #uploadImg,
+  #imageText,
+  #text {
+    width: 744px;
+  }
+}
+
+/* Extra Large (xl) large laptops and desktops*/
+
+@media (min-width: 1280px) {
+  /* Your styles for the extra large breakpoint here */
+}
+
+/* 2XL (2xl) */
+@media (min-width: 1536px) {
+  /* Your styles for the 2XL breakpoint here */
+}
