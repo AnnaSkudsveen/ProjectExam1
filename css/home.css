@@ -1,2 +1,246 @@
 @import url(root.css);
 @import url(nav-footer.css);
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-post-overview,
+.carousel-section {
+  padding: 0 20px;
+}
+
+.header-section {
+  margin: auto;
+  position: relative;
+  /* height: 480px;
+  width: 1000px; */
+}
+
+.header-section img {
+  height: 296px;
+  width: calc(100vw);
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.header-section h2,
+.header-section p {
+  position: absolute;
+  color: var(--background);
+  padding: 0 40px;
+}
+
+.header-section h2 {
+  bottom: 100px;
+}
+
+.header-section p {
+  bottom: 16px;
+}
+
+.carousel-section {
+  margin: 1rem;
+  position: relative;
+  overflow: clip;
+}
+
+.carousel-container {
+  height: 221px;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  z-index: 0;
+}
+
+.post {
+  width: 100%;
+  height: 100%;
+  flex: 1 0 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.post img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.post h2 {
+  position: absolute;
+  color: var(--background);
+  left: 12px;
+  bottom: 0px;
+  z-index: 50;
+  font-size: 28px;
+  padding-left: 8px;
+  z-index: 4;
+  opacity: 1;
+}
+
+.carousel-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3rem;
+  width: 3rem;
+  background-color: var(--main-background);
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 32px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 100ms;
+  z-index: 5;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus {
+  opacity: 1;
+}
+
+#carousel-arrow-prev {
+  left: 0;
+  padding-left: 0.25rem;
+}
+
+#carousel-arrow-next {
+  right: 0;
+  padding-left: 0.75rem;
+}
+
+.blog-post {
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-post img {
+  width: 270px;
+}
+
+.blog-post-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.blog-post button {
+  width: 136px;
+  height: 36px;
+  background-color: var(--primary);
+  color: var(--background);
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.blog-post button:hover,
+.blog-post button:focus {
+  background-color: var(--tertiary);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+}
+
+.post-link-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Small (sm)  portrait tablets and large phones */
+@media (min-width: 640px) {
+  main {
+    padding: 0 35px;
+  }
+}
+
+/* Medium (md) landscape tablets*/
+@media (min-width: 768px) {
+  /* Your styles for the medium breakpoint here */
+  main {
+    padding: 0 70px;
+  }
+
+  .header-section img {
+    height: 340px;
+  }
+
+  .header-section h2,
+  .header-section p {
+    padding: 0 70px;
+  }
+
+  .header-section h2 {
+    bottom: 70px;
+  }
+
+  .header-section p {
+    bottom: 20px;
+  }
+}
+
+/* Large (lg) laptops/desktops*/
+@media (min-width: 1024px) {
+  /* Your styles for the large breakpoint here */
+  main {
+    padding: 0 140px;
+  }
+
+  .header-section img {
+    height: 480px;
+  }
+
+  .carousel-container {
+    height: 328px;
+  }
+}
+
+/* Extra Large (xl) large laptops and desktops*/
+
+@media (min-width: 1280px) {
+  /* Your styles for the extra large breakpoint here */
+}
+
+/* 2XL (2xl) */
+@media (min-width: 1536px) {
+  /* Your styles for the 2XL breakpoint here */
+  main {
+    padding: 0;
+    width: 1400px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+  }
+
+  .header-section img {
+    width: 1400px;
+  }
+
+  .header-section h2,
+  .header-section p {
+    padding: 0 70px;
+  }
+
+  .header-section h2 {
+    bottom: 70px;
+  }
+
+  .header-section p {
+    bottom: 30px;
+  }
+}
