@@ -37,7 +37,7 @@ function getPosts() {
         carousel(data);
 
         const paginatedPosts = paginate(data.data, 4);
-        // showPosts(paginatedPosts);
+        showPosts(data);
         console.log(data);
         console.log(paginate(data.data, 4));
 
@@ -73,56 +73,48 @@ function showHeader(postData) {
     alt="${postData.data[0].media.alt}">
     <h2>${postData.data[0].title}</h2>
     <p>${shortenText(postData.data[0].body)}</p>
-    <button class="read-more-btn">Read more</button>
     </section>
     </a>
       `;
 }
 
-// function carousel(postData) {
-//   carouselSection.innerHTML = postData.data
-//     .slice(0, 3)
-//     .map(
-//       (post) => `
-//       <a class="post-link-card" href="post/index.html?id=${post.id}">
-//           <section class="post">
-//               <img src="${post.media.url}" alt="${post.media.alt}">
-//               <h2>${post.title}</h2>
-//               <p>${shortenText(post.body)}</p>
-//               <button>Read more</button>
-//           </section>
-//       </a>
-//   `
-//     )
-//     .join("");
-//   updateCarouselButtons();
-// }
-
 function carousel(postData) {
+  carouselContainer.innerHTML = "";
+
   for (let i = 0; i < 3; i++) {
     carouselContainer.innerHTML += `
     <a class="post-link-card post" 
     href="post/index.html?id=${postData.data[i].id}">
-    <div >
     <img src="${postData.data[i].media.url}"
     alt="${postData.data[i].media.alt}">
     <h2>${postData.data[i].title}</h2>
-    <p>${shortenText(postData.data[i].body)}</p>
-    <button>Read more</button>
-    </div>
     </a>
     `;
 
-    const postWidth = post.clientWidth;
+    //Its struggeling when the page goes back and forth in sizes, but overall it works
+    let currentIndex = 0;
+    const posts = document.querySelector(".post");
+    const postWidth = posts.clientWidth; // Get the width of the first post
 
     nextBtn.addEventListener("click", () => {
+      currentIndex = currentIndex + 1;
       carouselContainer.scrollLeft += postWidth;
-      console.log("moved forwards by " + postWidth + " width");
+      console.log("Moved forwards to index " + currentIndex);
+      if (currentIndex === 3) {
+        carouselContainer.scrollLeft -= postWidth * 2;
+        currentIndex = 0;
+      }
     });
 
     prevBtn.addEventListener("click", () => {
       carouselContainer.scrollLeft -= postWidth;
-      console.log("moved back by " + postWidth + " width");
+      console.log("Moved back to index " + currentIndex);
+      if (currentIndex === 0) {
+        carouselContainer.scrollLeft += postWidth * 2;
+        currentIndex = 2;
+      } else {
+        currentIndex = currentIndex - 1;
+      }
     });
   }
 }
@@ -149,8 +141,10 @@ function carousel(postData) {
 //     blogPostSection.innerHTML += `
 //     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
 //     <section class="blog-post">
+//     <div>
 //     <img src="${postData.data[i].media.url}" alt="">
 //     <h2>${postData.data[i].title}</h2>
+//     </div>
 //     <p>${shortenText(postData.data[i].body)}</p>
 //     <button>Read more</button>
 //     </section>
@@ -158,5 +152,21 @@ function carousel(postData) {
 //       `;
 //   }
 // }
+function showPosts(postData) {
+  for (let i = 0; i < 12; i++) {
+    blogPostSection.innerHTML += `
+    <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
+    <section class="blog-post">
+    <div>
+    <img src="${postData.data[i].media.url}" alt="">
+    <h2>${postData.data[i].title}</h2>
+    </div>
+    <p>${shortenText(postData.data[i].body)}</p>
+    <button>Read more</button>
+    </section>
+    </a>
+      `;
+  }
+}
 
 getPosts();

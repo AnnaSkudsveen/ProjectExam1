@@ -1,27 +1,46 @@
 @import url(root.css);
 @import url(nav-footer.css);
 
-main {
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-post-overview,
+.carousel-section {
   padding: 0 20px;
 }
 
 .header-section {
   margin: auto;
+  position: relative;
   /* height: 480px;
   width: 1000px; */
 }
 
 .header-section img {
-  height: 480px;
+  height: 296px;
   width: calc(100vw);
   object-fit: cover;
   overflow: hidden;
 }
 
-/* img {
-  width: 232px;
-  height: 201px;
-} */
+.header-section h2,
+.header-section p {
+  position: absolute;
+  color: var(--background);
+  padding: 0 40px;
+}
+
+.header-section h2 {
+  bottom: 100px;
+}
+
+.header-section p {
+  bottom: 16px;
+}
 
 .carousel-section {
   margin: 1rem;
@@ -37,12 +56,32 @@ main {
   padding: 0;
   overflow: hidden;
   scroll-behavior: smooth;
+  z-index: 0;
 }
 
 .post {
   width: 100%;
   height: 100%;
   flex: 1 0 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.post img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.post h2 {
+  position: absolute;
+  color: var(--background);
+  left: 12px;
+  bottom: 0px;
+  z-index: 50;
+  font-size: 28px;
+  padding-left: 8px;
+  z-index: 4;
+  opacity: 1;
 }
 
 .carousel-arrow {
@@ -62,6 +101,7 @@ main {
   cursor: pointer;
   opacity: 0.5;
   transition: opacity 100ms;
+  z-index: 5;
 }
 
 .carousel-arrow:hover,
@@ -79,17 +119,47 @@ main {
   padding-left: 0.75rem;
 }
 
-/* .post.one {
-  background-color: aqua;
+.blog-post {
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.post.two {
-  background-color: rgb(232, 255, 255);
+.blog-post img {
+  width: 270px;
 }
 
-.post.three {
-  background-color: rgb(55, 77, 77);
-} */
+.blog-post-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.blog-post button {
+  width: 136px;
+  height: 36px;
+  background-color: var(--primary);
+  color: var(--background);
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.blog-post button:hover,
+.blog-post button:focus {
+  background-color: var(--tertiary);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+}
+
+.post-link-card {
+  display: flex;
+  justify-content: space-between;
+}
 
 /* Small (sm)  portrait tablets and large phones */
 @media (min-width: 640px) {
@@ -104,6 +174,23 @@ main {
   main {
     padding: 0 70px;
   }
+
+  .header-section img {
+    height: 340px;
+  }
+
+  .header-section h2,
+  .header-section p {
+    padding: 0 70px;
+  }
+
+  .header-section h2 {
+    bottom: 70px;
+  }
+
+  .header-section p {
+    bottom: 20px;
+  }
 }
 
 /* Large (lg) laptops/desktops*/
@@ -111,6 +198,10 @@ main {
   /* Your styles for the large breakpoint here */
   main {
     padding: 0 140px;
+  }
+
+  .header-section img {
+    height: 480px;
   }
 
   .carousel-container {
@@ -129,7 +220,7 @@ main {
   /* Your styles for the 2XL breakpoint here */
   main {
     padding: 0;
-    width: calc(1400px - 140px);
+    width: 1400px;
     /* display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,5 +229,18 @@ main {
 
   .header-section img {
     width: 1400px;
+  }
+
+  .header-section h2,
+  .header-section p {
+    padding: 0 70px;
+  }
+
+  .header-section h2 {
+    bottom: 70px;
+  }
+
+  .header-section p {
+    bottom: 30px;
   }
 }
