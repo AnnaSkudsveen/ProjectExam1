@@ -18,6 +18,7 @@ registerBtn.addEventListener("click", (event) => {
         email: `${emailInput.value}`,
         password: `${passwordInput.value}`,
       }),
+
       // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
       headers: {
         "Content-type": "application/json; charset=UTF-8",

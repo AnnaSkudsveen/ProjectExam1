@@ -6,6 +6,12 @@ newPostBtn.addEventListener("click", () => {
   window.location.href = "/post/make.html";
 });
 
+function shortenText(text) {
+  const words = text.split(" ");
+  const wordsShort = words.slice(0, 20).join(" ") + "...";
+  return wordsShort;
+}
+
 function getPosts() {
   try {
     fetch("https://v2.api.noroff.dev/blog/posts/AnnaSkudsveen")
@@ -18,14 +24,7 @@ function getPosts() {
   }
 }
 
-function shortenText(text) {
-  const words = text.split(" ");
-  const wordsShort = words.slice(0, 20).join(" ") + "...";
-  return wordsShort;
-}
-
 function showPosts(postData) {
-  console.log(postData);
   for (let i = 0; i < postData.data.length; i++) {
     allPosts.innerHTML += `
     <a class="post-link-card" href="/post/edit.html?id=${postData.data[i].id}">

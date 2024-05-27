@@ -12,16 +12,13 @@ img {
   width: 100vw;
 }
 
-/* Small (sm)  portrait tablets and large phones */
 @media (min-width: 640px) {
   .post {
     padding: 0 35px;
   }
 }
 
-/* Medium (md) landscape tablets*/
 @media (min-width: 768px) {
-  /* Your styles for the medium breakpoint here */
   img {
     height: 400px;
   }
@@ -31,9 +28,7 @@ img {
   }
 }
 
-/* Large (lg) laptops/desktops*/
 @media (min-width: 1024px) {
-  /* Your styles for the large breakpoint here */
   body {
     display: flex;
     flex-direction: column;
