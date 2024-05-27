@@ -8,7 +8,7 @@ logInBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 
-registerBtn.addEventListener("click", () => {
+registerBtn.addEventListener("click", (event) => {
   event.preventDefault();
   try {
     fetch("https://v2.api.noroff.dev/auth/register", {
@@ -23,11 +23,17 @@ registerBtn.addEventListener("click", () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        window.location.replace(`login.html`);
-      });
+      .then((response) => {
+        response.json();
+        if (!response.ok) {
+          alert("Error: try again");
+        } else {
+          alert("New user created");
+          window.location.replace(`login.html`);
+        }
+      })
+      .then((data) => {});
   } catch (error) {
-    // errorHandling.innerHTML = `Login failed`;
+    console.error(error);
   }
 });
