@@ -48,9 +48,7 @@ function putRequest(id) {
     }),
   })
     .then((response) => response.json())
-    .then((data) => {
-      window.location.href = "../account/overview.html";
-    });
+    .then((data) => {});
 }
 
 function deleteRequest(id) {
@@ -67,10 +65,21 @@ function deleteRequest(id) {
   });
 }
 
-editBtn.addEventListener("click", () => {
+editBtn.addEventListener("click", (event) => {
   event.preventDefault();
   try {
-    putRequest(postId);
+    if (
+      titleInput.value === "" ||
+      textInput.value === "" ||
+      imageInput.value === "" ||
+      imageText.value === ""
+    ) {
+      console.log(titleInput.value.length);
+      alert("Do not leave the form empty");
+    } else {
+      putRequest(postId);
+      window.location.href = "../account/overview.html";
+    }
   } catch (error) {
     console.log("an error has happened, try logging in" + error);
   }
