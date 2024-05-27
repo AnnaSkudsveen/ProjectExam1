@@ -26,17 +26,25 @@ function postRequest() {
     }),
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log("sent information: " + data);
-      window.location.href = "../account/overview.html";
-    });
+    .then((data) => {});
 }
 
-publishBtn.addEventListener("click", () => {
+publishBtn.addEventListener("click", (event) => {
   event.preventDefault();
   try {
-    postRequest();
+    if (
+      titleInput.value === "" ||
+      textInput.value === "" ||
+      imageInput.value === "" ||
+      imageText.value === ""
+    ) {
+      console.log(titleInput.value.length);
+      alert("Do not leave the form empty");
+    } else {
+      postRequest();
+      window.location.href = "../account/overview.html";
+    }
   } catch (error) {
-    console.log("an error has happened, try logging in" + error);
+    alert("An error has happened, try logging in again");
   }
 });
