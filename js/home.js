@@ -22,7 +22,6 @@ function paginate(items, itemsPerPage) {
     const end = start + itemsPerPage;
     pages.push(items.slice(start, end));
   }
-  console.log(pages);
 
   return pages;
   // showPosts(pages);
@@ -35,33 +34,12 @@ function getPosts() {
       .then((data) => {
         showHeader(data);
         carousel(data);
-
-        const paginatedPosts = paginate(data.data, 4);
-        showPosts(data);
-        console.log(data);
-        console.log(paginate(data.data, 4));
-
-        // showPosts(paginatedPosts.data);
-        // for (const post in paginatedPosts[0]) {
-        //   showPosts(post);
-        // }
-
-        // let counter = 1;
-        // for (const postArray of paginatedPosts) {
-        //   const pageButton = document.createElement("button");
-        //   pageButton.innerText = counter;
-        //   counter++;
-        //   pageButton.addEventListener("click", () => {
-        //     blogPostSection.innerHTML = "  ";
-        //     for (const book of postArray) {
-        //       displayBook(book);
-        //     }
-        //   });
-        //   pageButtons.appendChild(pageButton);
-        // }
+        const paginatedPosts = paginate(data.data, 12);
+        showPosts(paginatedPosts[0]);
+        renderPagination(paginatedPosts);
       });
   } catch (error) {
-    console.log("an error has happened");
+    console.log(error);
   }
 }
 
@@ -69,7 +47,7 @@ function showHeader(postData) {
   headerSection.innerHTML += `
   <a class="post-link-card" href="post/index.html?id=${postData.data[0].id}">
     <section class="headerPost">
-    <img src="${postData.data[0].media.url}" 
+    <img src="${postData.data[0].media.url}"
     alt="${postData.data[0].media.alt}">
     <h2>${postData.data[0].title}</h2>
     <p>${shortenText(postData.data[0].body)}</p>
@@ -83,7 +61,7 @@ function carousel(postData) {
 
   for (let i = 0; i < 3; i++) {
     carouselContainer.innerHTML += `
-    <a class="post-link-card post" 
+    <a class="post-link-card post"
     href="post/index.html?id=${postData.data[i].id}">
     <img src="${postData.data[i].media.url}"
     alt="${postData.data[i].media.alt}">
@@ -99,7 +77,7 @@ function carousel(postData) {
     nextBtn.addEventListener("click", () => {
       currentIndex = currentIndex + 1;
       carouselContainer.scrollLeft += postWidth;
-      console.log("Moved forwards to index " + currentIndex);
+
       if (currentIndex === 3) {
         carouselContainer.scrollLeft -= postWidth * 2;
         currentIndex = 0;
@@ -108,7 +86,7 @@ function carousel(postData) {
 
     prevBtn.addEventListener("click", () => {
       carouselContainer.scrollLeft -= postWidth;
-      console.log("Moved back to index " + currentIndex);
+
       if (currentIndex === 0) {
         carouselContainer.scrollLeft += postWidth * 2;
         currentIndex = 2;
@@ -119,26 +97,27 @@ function carousel(postData) {
   }
 }
 
-// function showPosts(postData) {
-//   console.log(postData);
-//   for (let i = 0; i < postData.length; i++) {
-//     postData[i].forEach((post) => {
-//       blogPostSection.innerHTML += `
-//       <a class="post-link-card" href="post/index.html?id=${post[i].id}">
-//       <section class="blog-post">
-//       <img src="${postData[i].media.url}" alt="">
-//       <h2>${postData[i].title}</h2>
-//       <p>${shortenText(postData[i].body)}</p>
-//       <button>Read more</button>
-//       </section>
-//       </a>
-//         `;
-//     });
-//   }
-// }
+function showPosts(postData) {
+  // for (let i = 0; i < postData.length; i++) {
+  //   console.log(postData[i]);
+  postData.forEach((post) => {
+    blogPostSection.innerHTML += `
+      <a class="post-link-card" href="post/index.html?id=${post.id}">
+      <section class="blog-post">
+      <img src="${post.media.url}" alt="">
+      <h2>${post.title}</h2>
+      <p>${shortenText(post.body)}</p>
+      <button>Read more</button>
+      </section>
+      </a>
+        `;
+  });
+  // }
+}
 
+//Only shows 12 posts, I wanted to be able to show 12 at a time, therefore I chose to add pagination
 // function showPosts(postData) {
-//   for (let i = 0; i < postData.data.length; i++) {
+//   for (let i = 0; i < 12; i++) {
 //     blogPostSection.innerHTML += `
 //     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
 //     <section class="blog-post">
@@ -153,21 +132,23 @@ function carousel(postData) {
 //       `;
 //   }
 // }
-function showPosts(postData) {
-  for (let i = 0; i < 12; i++) {
-    blogPostSection.innerHTML += `
-    <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
-    <section class="blog-post">
-    <div>
-    <img src="${postData.data[i].media.url}" alt="">
-    <h2>${postData.data[i].title}</h2>
-    </div>
-    <p>${shortenText(postData.data[i].body)}</p>
-    <button>Read more</button>
-    </section>
-    </a>
-      `;
-  }
+
+//Code copied from https://mollify.noroff.dev/content/feu1/javascript-1/module-7/pagination?nav=programme
+
+function renderPagination(paginatedPosts) {
+  const pagination = document.querySelector(".navigation");
+  pagination.innerHTML = "";
+  console.log(pagination);
+
+  paginatedPosts.forEach((page, index) => {
+    const button = document.createElement("button");
+    button.textContent = index + 1;
+    button.addEventListener("click", () => {
+      blogPostSection.innerHTML = "";
+      showPosts(page);
+    });
+    pagination.append(button);
+  });
 }
 
 getPosts();
