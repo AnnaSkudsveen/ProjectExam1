@@ -136,6 +136,7 @@ function carousel(postData) {
 //     });
 //   }
 // }
+
 // function showPosts(postData) {
 //   for (let i = 0; i < postData.data.length; i++) {
 //     blogPostSection.innerHTML += `

@@ -50,14 +50,18 @@ main {
   padding-top: 20px;
 }
 
-.blog-post,
-.post-link-card {
+.blog-post {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 135px;
-  height: 272px;
+  height: 100%;
+  width: 100%;
   justify-content: space-between;
+}
+
+.post-link-card {
+  width: 135px;
+  height: auto;
 }
 
 .post-link-card h2 {
