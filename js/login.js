@@ -12,6 +12,7 @@ logInBtn.addEventListener("click", () => {
   try {
     fetch("https://v2.api.noroff.dev/auth/login", {
       method: "POST",
+      // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
@@ -19,10 +20,15 @@ logInBtn.addEventListener("click", () => {
         email: `${emailInput.value}`,
         password: `${passwordInput.value}`,
       }),
-
-      // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
     })
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json().then((data) => {
+          if (!response.ok) {
+            alert("Error: try again");
+          }
+          return data;
+        });
+      })
       .then((data) => {
         accesstoken = data.data.accessToken;
         sessionStorage.setItem("accesstoken", `${accesstoken}`);
