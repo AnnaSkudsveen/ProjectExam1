@@ -79,30 +79,19 @@ main {
   width: 135px;
 }
 
-/* Small (sm)  portrait tablets and large phones */
 @media (min-width: 640px) {
   main {
     padding: 0 35px;
   }
 }
 
-/* Medium (md) landscape tablets*/
-@media (min-width: 768px) {
-  /* Your styles for the medium breakpoint here */
-}
-
-/* Large (lg) laptops/desktops*/
 @media (min-width: 1024px) {
-  /* Your styles for the large breakpoint here */
   main {
     padding: 0 70px;
   }
 }
 
-/* Extra Large (xl) large laptops and desktops*/
-
 @media (min-width: 1280px) {
-  /* Your styles for the extra large breakpoint here */
   main {
     max-width: 1280px;
   }
@@ -110,8 +99,6 @@ main {
   .all-posts {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center;
-    align-items: center; */
     gap: 20px;
   }
 }

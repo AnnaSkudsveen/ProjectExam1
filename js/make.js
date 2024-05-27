@@ -4,7 +4,6 @@ const textInput = document.getElementById("text");
 const imageInput = document.getElementById("uploadImg");
 const imageText = document.getElementById("imageText");
 const tagInput = document.getElementById("tags");
-
 const accessToken = sessionStorage.getItem("accesstoken");
 
 function postRequest() {
@@ -12,6 +11,7 @@ function postRequest() {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${accessToken}`,
+
       // header taken from: https://mollify.noroff.dev/content/feu1/javascript-1/module-5/api-methods/http-post-request-method?nav=programme
       "Content-type": "application/json; charset=UTF-8",
     },
@@ -26,7 +26,9 @@ function postRequest() {
     }),
   })
     .then((response) => response.json())
-    .then((data) => {});
+    .then((data) => {
+      window.location.href = "../account/overview.html";
+    });
 }
 
 publishBtn.addEventListener("click", (event) => {
@@ -38,11 +40,9 @@ publishBtn.addEventListener("click", (event) => {
       imageInput.value === "" ||
       imageText.value === ""
     ) {
-      console.log(titleInput.value.length);
       alert("Do not leave the form empty");
     } else {
       postRequest();
-      window.location.href = "../account/overview.html";
     }
   } catch (error) {
     alert("An error has happened, try logging in again");

@@ -24,7 +24,6 @@ function paginate(items, itemsPerPage) {
   }
 
   return pages;
-  // showPosts(pages);
 }
 
 function getPosts() {
@@ -69,10 +68,9 @@ function carousel(postData) {
     </a>
     `;
 
-    //Its struggeling when the page goes back and forth in sizes, but overall it works
     let currentIndex = 0;
     const posts = document.querySelector(".post");
-    const postWidth = posts.clientWidth; // Get the width of the first post
+    const postWidth = posts.clientWidth;
 
     nextBtn.addEventListener("click", () => {
       currentIndex = currentIndex + 1;
@@ -98,8 +96,6 @@ function carousel(postData) {
 }
 
 function showPosts(postData) {
-  // for (let i = 0; i < postData.length; i++) {
-  //   console.log(postData[i]);
   postData.forEach((post) => {
     blogPostSection.innerHTML += `
       <a class="post-link-card" href="post/index.html?id=${post.id}">
@@ -112,33 +108,13 @@ function showPosts(postData) {
       </a>
         `;
   });
-  // }
 }
-
-//Only shows 12 posts, I wanted to be able to show 12 at a time, therefore I chose to add pagination
-// function showPosts(postData) {
-//   for (let i = 0; i < 12; i++) {
-//     blogPostSection.innerHTML += `
-//     <a class="post-link-card" href="post/index.html?id=${postData.data[i].id}">
-//     <section class="blog-post">
-//     <div>
-//     <img src="${postData.data[i].media.url}" alt="">
-//     <h2>${postData.data[i].title}</h2>
-//     </div>
-//     <p>${shortenText(postData.data[i].body)}</p>
-//     <button>Read more</button>
-//     </section>
-//     </a>
-//       `;
-//   }
-// }
 
 //Code copied from https://mollify.noroff.dev/content/feu1/javascript-1/module-7/pagination?nav=programme
 
 function renderPagination(paginatedPosts) {
   const pagination = document.querySelector(".navigation");
   pagination.innerHTML = "";
-  console.log(pagination);
 
   paginatedPosts.forEach((page, index) => {
     const button = document.createElement("button");

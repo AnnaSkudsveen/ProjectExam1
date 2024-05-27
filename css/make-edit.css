@@ -66,6 +66,7 @@ textarea {
 .buttons {
   margin-top: 40px;
   display: flex;
+  flex-direction: row-reverse;
   gap: 20px;
 }
 

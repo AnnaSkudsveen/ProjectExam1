@@ -48,7 +48,9 @@ function putRequest(id) {
     }),
   })
     .then((response) => response.json())
-    .then((data) => {});
+    .then((data) => {
+      window.location.href = "../account/overview.html";
+    });
 }
 
 function deleteRequest(id) {
@@ -74,11 +76,9 @@ editBtn.addEventListener("click", (event) => {
       imageInput.value === "" ||
       imageText.value === ""
     ) {
-      console.log(titleInput.value.length);
       alert("Do not leave the form empty");
     } else {
       putRequest(postId);
-      window.location.href = "../account/overview.html";
     }
   } catch (error) {
     console.log("an error has happened, try logging in" + error);

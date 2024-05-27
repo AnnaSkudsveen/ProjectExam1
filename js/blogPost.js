@@ -1,5 +1,4 @@
 const blogPost = document.querySelector(".post");
-
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 const postId = searchParameters.get("id");
@@ -27,6 +26,3 @@ function showPosts(postData) {
 }
 
 getPosts();
-
-// const title = post.title;
-// document.title = `${title} || HotView Labs`;
