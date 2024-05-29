@@ -158,6 +158,17 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.navigation {
+  display: flex;
+  justify-content: center;
+}
+
+.navigation button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  text-decoration: underline;
+}
 
 @media (min-width: 640px) {
   main {
