@@ -4,17 +4,32 @@
 .post {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  margin: 0 20px;
 }
 
 img {
   height: 360px;
-  width: 100vw;
+  width: auto;
+  object-fit: cover;
+}
+
+.post h1 {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.post p {
+  margin: 0;
+}
+
+.blog-post-text {
+  margin: 0 20px;
 }
 
 @media (min-width: 640px) {
-  .post {
-    padding: 0 35px;
+  .post,
+  .blog-post-text {
+    margin: 0 35px;
   }
 }
 
@@ -23,8 +38,9 @@ img {
     height: 400px;
   }
 
-  .post {
-    padding: 0 100px;
+  .post,
+  .blog-post-text {
+    margin: 0 70px;
   }
 }
 
@@ -40,7 +56,16 @@ img {
   }
 
   .post {
-    padding: 0 160px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post h1 {
+    font-size: 48px;
+  }
+
+  .blog-post-text {
+    margin: 20px;
   }
 
   img {

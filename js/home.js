@@ -100,8 +100,10 @@ function showPosts(postData) {
     blogPostSection.innerHTML += `
       <a class="post-link-card" href="post/index.html?id=${post.id}">
       <section class="blog-post">
+      <div>
       <img src="${post.media.url}" alt="">
       <h2>${post.title}</h2>
+      </div>
       <p>${shortenText(post.body)}</p>
       <button>Read more</button>
       </section>

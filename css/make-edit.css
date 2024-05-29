@@ -5,6 +5,18 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+#home-btn {
+  text-decoration: underline;
+  color: var(--primary);
+  align-self: center;
+  margin-top: 20px;
+}
+
 input,
 textarea {
   background-color: var(--background);
