@@ -4,9 +4,22 @@
 ## Description
 This project was developed for a school exam. The objective was to create a front-end user interface for an existing API blogging application for a client, HotView Labs. It's a responsive application that allows users to view blog posts. Additionally, there's an admin page for the owner to register, log in, and manage their blog posts.
 
-[Website](https://anna-skudsveen-project-exam1.netlify.app/)
 
-[Figma file](https://www.figma.com/design/iwm2yt2TfuKaHf5iic2Tow/Project-Exam-1?node-id=1-9&t=3dOHjK1AYfBmzKeX-1)
+You can see a deployed demo of the project [here](https://anna-skudsveen-project-exam1.netlify.app/)
+
+### Features
+ - Authorized admin page for managing blog posts.
+ - Login and registration for users who are part of the company.
+ - Create new posts.
+ - Edit existing posts.
+ - Delete posts.
+ - Front-end interface for an existing API blogging application.
+ - Responsive design for compatibility with various devices.
+ - View blog posts on a public-facing webpage.
+ - Carousel displaying the latest 3 posts.
+ - Display of the writer and the time each post was made.
+ - Pagination to show only the latest 12 posts at a time.
+ - API error handling to manage issues with API calls.
 
 ## Technologies
 JS
@@ -15,13 +28,17 @@ HTML
 
 CSS
 
+Git
+
+[Figma](https://www.figma.com/design/iwm2yt2TfuKaHf5iic2Tow/Project-Exam-1?node-id=1-9&t=3dOHjK1AYfBmzKeX-1)
+
 ## Project Roadmap
 While I am happy about the project, I would love to further enhance the user experience, and add more and better user feedback. Search, filter and sort functions would also be great moving forward.
 
-## Plans
+### Plans
 [FigJam board](https://www.figma.com/board/d33EUlTGVsuDs9HFsSo9Jf/Project-Exam-1---Figjam?node-id=0-1&t=ZwkSv96Svz6xNCAY-1)
 
-#### User flow
+### User flow
 ```mermaid
 flowchart TD
     A(User) -->B[Landing, home <br> /index.html]
